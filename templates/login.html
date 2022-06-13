@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Trailers</title>
+<!--    bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+
+</head>
+<body>
+    <h2 class="tit">Movie Trailers</h2>
+    <div class="login-form">
+      {% block content %}
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="email" name="log_name" class="form-control email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail">
+            </div>
+            <div class="form-group">
+                <input type="password" name="log_password" class="form-control password" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            {% with messages = get_flashed_messages(with_categories=true)%}
+                {% for category, msg in messages %}
+                    <p class="{{category}}">{{msg}}</p>
+                {% endfor %}
+            {% endwith %}
+<!--            <div class="form-group form-check">-->
+<!--                <input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+<!--                <label class="form-check-label" for="exampleCheck1">Check me out</label>-->
+<!--            </div>-->
+            <button class="btn" type="submit">Log in</button>
+<!--            <button class="btn" href="/main">Log in</button>-->
+            <!-- Button trigger modal -->
+
+            <button type="button" class="modal-btn" data-toggle="modal" data-target="#exampleModal">
+                Create Account
+            </button>
+            <!-- Modal -->
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Registration</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+<!--                            modal form by me-->
+
+                            <div class="modal-body-main">
+                                <input type="text" name="first_name" placeholder="სახელი" class="name">
+                                <input type="text" name="last_name" placeholder="გვარი" class="name">
+                                <input type="text" name="email" placeholder="ელფოსტა" class="email-input">
+                                <input type="text" name="password" placeholder="ახალი პაროლი" class="password-input">
+
+                            </div>
+                            <div class="birthday-container">
+                                <p class="date">დაბადების თარიღი</p>
+                            </div>
+                            <div class="selection">
+                                <div class="sels">
+                                    <select class="sel1" name="year">
+                                        <option value="" selected>2022</option>
+                                        <option value="">1998</option>
+                                        <option value="">1999</option>
+                                        <option value="">2000</option>
+                                        <option value="">2001</option>
+                                        <option value="">2002</option>
+                                        <option value="">2003</option>
+                                        <option value="">2004</option>
+                                        <option value="">2004</option>
+                                        <option value="">2005</option>
+                                        <option value="">2006</option>
+                                    </select>
+                                    <select  class="sel2" name="number">
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                        <option value="">4</option>
+                                        <option value="" selected>5</option>
+                                        <option value="">6</option>
+                                        <option value="">7</option>
+                                        <option value="">8</option>
+                                        <option value="">9</option>
+                                        <option value="">10</option>
+                                        <option value="">11</option>
+                                        <option value="">12</option>
+                                        <option value="">13</option>
+                                        <option value="">14</option>
+                                    </select>
+                                    <select class="sel3" name="month">
+                                        <option value="" selected>იანვარი</option>
+                                        <option value="">თებერვალი</option>
+                                        <option value="">მარტი</option>
+                                        <option value="">აპრილი</option>
+                                        <option value="">მაისი</option>
+                                        <option value="">ივნისი</option>
+                                        <option value="">ივლისი</option>
+                                        <option value="">აგვისტო</option>
+                                        <option value="">სექტემბერი</option>
+                                        <option value="">ოქტომბერი</option>
+                                        <option value="">ნოემბერი</option>
+                                        <option value="">დეკემბერი</option>
+                                    </select>
+                                </div>
+                                <div class="sex">
+                                    <p class="date">სქესი</p>
+                                </div>
+                                <div class="radio">
+                                    <div class="radio1">
+                                        <input type="radio" name = "gender" class="radio-inp" value="male"><label class="sex1">Male</label>
+                                    </div>
+                                    <div class="radio2">
+                                        <input type="radio" name = "gender" class="radio-inp" value="female"><label class="sex1">Female</label>
+                                    </div>
+                                    <div class="radio3">
+                                        <input type="radio" name = "gender" class="radio-inp" value="other"><label class="sex1">Other</label>
+                                    </div>
+                                </div>
+
+                                <input type="file" name="userimage">
+>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn-close" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn-save">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+      {% endblock %}
+  </div>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+</body>
+
+<style>
+    .tit{
+        color: white;
+        font-size: 50px;
+
+    }
+    .btn-close{
+        border: none;
+        border-radius: 6px;
+        width: 70px;
+        height: 36px;
+        background-color: red;
+        color: white;
+    }
+    .btn-save{
+        margin-right: 10px;
+        border: none;
+        border-radius: 6px;
+        width: 100px;
+        height: 36px;
+        background-color: green;
+        color: white;
+    }
+    .modal-title{
+        font-size: 30px;
+        font-weight: bold;
+    }
+    h2{
+        margin-bottom: 50px;
+    }
+    .login-form{
+        width: 400px;
+        background-color: rgba(255, 255, 255, 0.49);
+        padding-bottom: 80px;
+        padding-top: 80px;
+        border-radius: 60px;
+    }
+    form{
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: calc(100vh/2 - 300px);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-image: url("/static/img/filmreel-1654879072941-5600.jpg");
+    }
+    .btn{
+        background-color: blue;
+        color: white;
+        width: 300px;
+        height: 50px;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .email{
+        width: 300px;
+        height: 50px;
+        border-radius: 30px;
+    }
+    .password{
+        width: 300px;
+        height: 50px;
+        border-radius: 30px;
+    }
+    .modal-btn{
+        width: 300px;
+        border: none;
+        background-color: rgba(255, 255, 255, 0);
+    }
+    .modal-body-main{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .name{
+        width: 225px;
+        height: 40px;
+        border-radius: 6px;
+        border: 1px solid gray;
+    }
+    .email-input{
+        width: calc(100% - 7px);
+        margin-top: 20px;
+        height: 40px;
+        border-radius: 6px;
+        border: 1px solid gray;
+    }
+    .password-input{
+        width: calc(100% - 9px);
+        margin-top: 20px;
+        height: 40px;
+        border-radius: 6px;
+        border: 1px solid gray;
+    }
+    .birthday-container{
+        margin-top: 20px;
+        margin-left: 2px;
+    }
+    select{
+        width: 141.5px;
+        height: 36px;
+        margin: 0px 0px 0px 0px;
+        padding: 0px 20px 0px 0px;
+        border-radius: 6px;
+
+    }
+    .radio1 {
+        border: 1px solid gray;
+        width: 145px;
+        height: 32px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+    }
+    .radio2 {
+        border: 1px solid gray;
+        width: 156px;
+        height: 32px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+    }
+    .radio3 {
+        border: 1px solid gray;
+        width: 110px;
+        height: 32px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+
+    }
+    .radio {
+        margin-top: -12px;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+
+    }
+    .sels{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .sex{
+        font-size: 14px;
+        margin-top: 10px;
+        margin-left: 2px;
+    }
+    .sex1{
+        margin-top: 6px;
+        margin-left: 10px;
+    }
+    .date {
+        font-size: 14px;
+        margin-left: 12px;
+    }
+    .selection{
+        margin-top: -10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .radio-inp{
+        margin-left: 5px;
+    }
+
+
+
+</style>
+</html>
